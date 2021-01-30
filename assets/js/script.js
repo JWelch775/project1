@@ -1,10 +1,12 @@
+var searchFormEl = document.querySelector("#index-form")
+var artistInputEl = document.querySelector("#artist")
+var cityInputEl = document.querySelector("#citySearch")
 
 
-
-function getEvents()
+function getEvents(keyword)
     {
         //format ticketmaster api url 
-        var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=343&apikey=OsK3mvfl7RepNMB8j29ox4Yz0DY3KYvU"
+        var apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + keyword + "&dmaId=343&apikey=OsK3mvfl7RepNMB8j29ox4Yz0DY3KYvU"
 
         //make a request to the url
         fetch(apiUrl).then(function(response)
@@ -13,7 +15,7 @@ function getEvents()
                     {
                         response.json().then(function(data)
                             {
-                                console.log(data);
+                                console.log(data, keyword);
                             });
                     }
                 else(function(error)
@@ -21,11 +23,38 @@ function getEvents()
                         alert("Unable to connect to TicketMaster site");
                     })
             })
+        .catch(function(error)
+            {
+                alert("Unable to connect to TicketMaster");
+            })
     }
 
-getEvents("beth hart")
+function formSubmitHandler(event)
+    {
+        event.preventDefault();
+
+        //get value from input element
+        var artist = artistInputEl.value.trim();
+
+        if(artist)
+            {
+                getEvents(artist);
+                artistInputEl.value = "";
+            }
+        else
+            {
+                alert("Please enter an artist name");
+            }
+    };
 
 
+function displayEvents()
+    {
+
+    }
+
+
+searchFormEl.addEventListener("submit", formSubmitHandler);
 
 
 

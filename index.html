@@ -27,7 +27,7 @@
             <div class="col-md-6 welcome text-center">
                 <h1>Attend an Event by Your Favorite Artist!</h1>
                 <form id="index-form">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search Artist" aria-label="Search" id="artist" required>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search Artist" aria-label="Search" id="artist" required>
                     <input class="form-control mr-sm-2" type="search" placeholder="City" aria-label="Search" id="citySearch">
                     <input id="homeSearch" type="submit"  value="Search" />
                 </form>
@@ -35,8 +35,12 @@
         </div>
     </div>
     
+    <main id="event-container">
+        <ul id="event-list">
+
+        </ul>
+    </main>
+
     <script src="./assets/js/script.js"></script>
-    
-    <!-- add script api for location?-->
 </body>
 </html>
