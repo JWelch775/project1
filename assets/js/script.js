@@ -16,7 +16,7 @@ function getEvents(keyword)
                         response.json().then(function(response)
                             {
                                 displayEvents(response, keyword);
-                                console.log(keyword, response);
+                                //console.log(keyword, response);
                             });
                     }
                 else(function(error)
@@ -50,26 +50,28 @@ function formSubmitHandler(event)
 
 function displayEvents(shows, searchTerm)
     {
+        var showArr = shows._embedded.events
+        console.log(shows);
         eventContainerEl.textContent = "";
         artistSearchTerm.textContent = searchTerm;
         
 
 
         //check if api returned any events
-        if(shows.length === 0)
+        if(showArr.length === 0)
             {
                 eventContainerEl.textContent = "No events found for this artist";
                 return;
             }
 
         //loop over events
-        for(var i = 0; i < shows.length; i++)
+        for(var i = 0; i < showArr.length; i++)
             {
-                var eventTitle = shows[i].name.events._embedded;
-                
+                var eventTitle = showArr[i].name;
+                console.log(eventTitle);
 
                 //create a container for each event
-                var eventEl = document.createElement("div");
+                var eventEl = document.createElement("a");
                 eventEl.classList = "list-item";
                 
                 //create a span element to hold event names
@@ -80,7 +82,9 @@ function displayEvents(shows, searchTerm)
                 eventEl.appendChild(eventTitleEl);
 
                 eventContainerEl.appendChild(eventEl);
+
             }
+            
             
     }
 
