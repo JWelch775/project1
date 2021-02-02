@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <title>Nashville Event Master</title>
     <!--link non bootstrap rel="stylesheet" href="-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <!--CSS-->
     <link rel = "stylesheet" href="./assets/css/style.css">
     <!--Jquery-->
@@ -17,8 +18,8 @@
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 </head>
-<!--background image "home"-->
-<body id= "home" class="flex-column min-100-vh">
+<!--background image -->
+<body class="flex-column min-100-vh">
     <!--nav bar-->
     <div class="topnav">
         <a class="active" href="#home">Home</a>
@@ -31,7 +32,7 @@
     <!--main content, change to list events , search flights-->
         <main class="flex-row justify-space-between">
             <div class="card"><h3 class="card-header text-uppercase">Search by Artist</h3>
-              <form id="user-form" class="card-body">
+              <form id="artist-form" class="card-body">
                 <label class="form-label" for="Artist">Artist</label>
                 <input name="Artist" id="Artist" type="text" autofocus="true" class="form-input"/>
                 <button type ="submit" class="btn">Get Events in Nashville </button>

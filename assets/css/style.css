@@ -92,12 +92,8 @@
       transform: translate(0, 0);
       box-shadow: 2px 2px var(--dark);
     }
-    
-#home {
-    background: url("https://ak5.picdn.net/shutterstock/videos/4863305/thumb/1.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+body {
+    background-image: url("https://ak5.picdn.net/shutterstock/videos/4863305/thumb/1.jpg") no-repeat center center fixed;
     background-size: cover;
 }
 .app-title {

@@ -1,6 +1,8 @@
-var searchFormEl = document.querySelector("#index-form")
-var artistInputEl = document.querySelector("#artist")
+var artistFormEl = document.querySelector("#artist-form")
+var nameInputEl = document.querySelector("#artist")
 var cityInputEl = document.querySelector("#citySearch")
+var eventContainerEl = document.querySelector("event-container")
+
 
 
 function getEvents(keyword)
@@ -40,6 +42,10 @@ function formSubmitHandler(event)
             {
                 getEvents(artist);
                 artistInputEl.value = "";
+
+                // clear old content
+      eventContainerEl.textContent = "";
+      nameInputEl.value = "";
             }
         else
             {
