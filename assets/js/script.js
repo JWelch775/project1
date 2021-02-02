@@ -1,7 +1,7 @@
-var searchFormEl = document.querySelector("#index-form")
-var artistInputEl = document.querySelector("#artist")
-var cityInputEl = document.querySelector("#citySearch")
-
+var searchFormEl = document.querySelector("#user-form")
+var artistInputEl = document.querySelector("#artist-search")
+var eventContainerEl = document.querySelector("#event-container")
+var artistSearchTerm = document.querySelector("#event-search-term")
 
 function getEvents(keyword)
     {
@@ -13,9 +13,10 @@ function getEvents(keyword)
             {
                 if(response.ok)
                     {
-                        response.json().then(function(data)
+                        response.json().then(function(response)
                             {
-                                console.log(data, keyword);
+                                displayEvents(response, keyword);
+                                console.log(keyword, response);
                             });
                     }
                 else(function(error)
@@ -47,10 +48,40 @@ function formSubmitHandler(event)
             }
     };
 
-
-function displayEvents()
+function displayEvents(shows, searchTerm)
     {
+        eventContainerEl.textContent = "";
+        artistSearchTerm.textContent = searchTerm;
+        
 
+
+        //check if api returned any events
+        if(shows.length === 0)
+            {
+                eventContainerEl.textContent = "No events found for this artist";
+                return;
+            }
+
+        //loop over events
+        for(var i = 0; i < shows.length; i++)
+            {
+                var eventTitle = shows[i].name.events._embedded;
+                
+
+                //create a container for each event
+                var eventEl = document.createElement("div");
+                eventEl.classList = "list-item";
+                
+                //create a span element to hold event names
+                var eventTitleEl = document.createElement("span");
+                eventTitleEl.textContent = eventTitle;
+
+                //append to container 
+                eventEl.appendChild(eventTitleEl);
+
+                eventContainerEl.appendChild(eventEl);
+            }
+            
     }
 
 
