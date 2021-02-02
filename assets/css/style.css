@@ -1,33 +1,28 @@
 :root {
-  --primary: #ccdad1;
+  --primary: #41fbbc;
   --secondary: #7648b3;
   --tertiary: #3e2085;
   --light-dark: #3b60b1;
   --dark: #2e3138;
   --border-radius: .3rem;
+  --dark-grey: #1d1d1d;
 }
 
-header {
-  background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0;
-  position: relative;
+#forms {
+  padding-top: 50px;
 }
-* {
-  box-sizing: border-box;
+
+.hero {
+  filter: grayscale(100);
 }
 
 body {
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlaudaxeuyYtIPk16ykeZkC-codezg-DDp0g&usqp=CAU);
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+  background-color: var(--dark-grey);
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 button {
@@ -44,17 +39,6 @@ button:focus {
 }
 header h1 {
   margin: 0 0 30px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 700;
-  margin: 0;
-  color: var(--primary);
-  line-height: 1.25;
 }
 
 form {
@@ -78,7 +62,7 @@ form button {
   background-color:var(--primary);
   border: 0;
   border-radius: 50px;
-  color: whitesmoke;
+  color: var(--dark-grey);
   font-size: 16px;
   padding: 13px 30px;
 }
