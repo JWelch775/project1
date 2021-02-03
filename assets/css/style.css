@@ -1,13 +1,21 @@
 :root {
   --primary: #41fbbc;
+
   --dark: #292929;
   --light-grey: #808080;
   --light: #ffffff;
+  --secondary: #7648b3;
+  --tertiary: #3e2085;
+  --light-dark: #3b60b1;
+  --dark: #2e3138;
+  --border-radius: .3rem;
+  --dark-grey: #1d1d1d;
 }
 
 #forms {
   padding-top: 50px;
 }
+
 
 #events {
   padding: 50px;
@@ -45,6 +53,7 @@ a:hover {
   filter: grayscale(100);
 }
 
+
 footer {
   background-color: black;
   padding: 50px;
@@ -53,6 +62,9 @@ footer {
 body {
   background-color: var(--dark);
   color: var(--light);
+body {
+  background-color: var(--dark-grey);
+  color: white;
 }
 
 * {
@@ -72,13 +84,20 @@ button:focus {
   outline: none;
 }
 
+header h1 {
+  margin: 0 0 30px;
+}
+
 form {
   position: relative;
   width: 500px;
   max-width: 100%;
 }
 
-input {
+
+
+form input {
+
   border: 0;
   border-radius: 50px;
   font-size: 16px;
@@ -97,6 +116,7 @@ form button {
   font-size: 16px;
   padding: 13px 30px;
 }
+
 
 li {
   list-style: none;
@@ -127,6 +147,7 @@ li {
   margin: 15px;
 }
 
+
 .event-list {
   padding-bottom: 5px;
   display: flex;
@@ -137,3 +158,4 @@ li {
   color: var(--light);
   border-radius: 50px;
 }
+
