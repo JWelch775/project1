@@ -15,57 +15,68 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!--Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-    <title>Nashville Event Master</title>
+    <title>Nashville Music Events</title>
     <link rel = "stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-        <header class="hero">
-            <h1 class="app-title"> Nashville Music Events</h1>
+
+        <div class="ui centered inverted item menu">
+          <div class="item">
+            <img src="./assets/images/placeholder.png">
+            Nashville Music Events
+          </div>
+        </div>
+
+        <header>
+            <img class="ui fluid image hero" src="/assets/images/hero.jpg">
         </header>
     <!--main content, change to list events , search flights-->
-        <main >
-            <div class="card">
-              <h1>SearchArtist</h1>
-              <form id="user-form" class="card-body">
+            <div class="">
+              <h2>Search Artist:</h2>
+              <form id="user-form">
                 <input name="artist" id="artist-search" type="text" placeholder="Enter artist name" class="form-input"/>
-                <button>Get Events </button>
+                <button>Get Events</button>
               </form>
             </div>
+
             <div id="events" class="container">
               <h3 class="subtitle">Upcoming Events will display here : <span id="event-search-term"></span></h3>
               <div id="event-container" class="list-group"></div>
             </div>
 
             <div class="card">
-            <h1>SearchLyrics</h1>
+            <h2>Search Lyrics:</h2>
             <form id="form">
                 <input type="text" id="search" placeholder="Enter artist/song name...">
                 <button>Get Lyrics</button>
             </form>
-          </div>
-        <div id="result" class="container">
-            <h3>Lyric Results will be displayed here:</h3>
-        </div>
-    
-        <div class="card">
-                <h1>Your Event is Within Reach</h1>
-                <form id="travel-form">
-                    <input name="citySearch" placeholder="Enter Your Departure City" 
-                    id="citySearch" type="text" class="form-input"/>
-                    <button>Get Tickets</button>
-                  </form>
-                </div>
-                <div class="container">
-                  <h3 > Choose a flight: <span id="flight-search"></span></h3>
-                  <div id="flight-container" class="">
-                  </div>
-                </div>
-
-                </div>
-              </div>
             </div>
-              </main>
+            <div id="result" class="container">
+              <h3>Lyric Results will be displayed here:</h3>
+            </div>
+    
+            <section>
+              <h1>Search Flights:</h1>
+              <form action="http://www.kayak.com/s/search/air" method="GET">
+                <fieldset>
+                  <legend>Origin</legend>
+                  <label>From
+                    <input type="search" name="l1" data-smarty-s="1" size="50" autocomplete="off"></label>
+                  <label>Depart
+                    <input type="date" name="t1"></label>
+                </fieldset>
+                <br>
+                <fieldset>
+                  <legend>Destination</legend>
+                  <label>To
+                    <input type="search" name="l2" data-smarty-s="1" size="50" autocomplete="off" required></label>
+                  <label>Return
+                    <input type="date" name="t2"></label>
+                </fieldset>
+                <button type="submit">Search</button>
+              </form>
+            </section>
 
     <script src="./assets/js/script.js"></script>
 </body>
