@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-    
+    <link rel="icon" href="./assets/images/logo.svg">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
     <!--link non bootstrap rel="stylesheet" href="-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />
     <!--Jquery-->
@@ -17,21 +17,40 @@
     <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
     <title>Nashville Music Events</title>
     <link rel = "stylesheet" href="./assets/css/style.css">
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
+      <section>
         <div class="ui centered inverted item menu">
           <div class="item">
-            <img src="./assets/images/placeholder.png">
+            <img src="./assets/images/logo.svg">
             Nashville Music Events
           </div>
         </div>
+      </section>
 
         <header>
-            <img class="ui fluid image hero" src="/assets/images/hero.jpg">
+            <img class="ui fluid image hero" src="https://github.com/JWelch775/project1/blob/main/assets/images/hero.jpg?raw=true">
         </header>
     <!--main content, change to list events , search flights-->
+
+          <section id="events">
+            <div class="ui grid container">
+              <div id="searchArtist" class="eight wide column">
+                <h2>Search Artist:</h2>
+                <form id="user-form">
+                  <input name="artist" id="artist-search" type="text" placeholder="Enter artist name" class="form-input"/>
+                  <button>Get Events</button>
+                </form>
+              </div>
+              <div class="eight wide column bg-light">
+                <div class="ui link list">
+                  <h3 class="subtitle">Showing results for: <span id="event-search-term"></span></h3>
+                  <div id="event-container"></div>
+                </div>
+              </div>
+
             <div class="">
               <h2>Search Artist:</h2>
               <form id="user-form">
@@ -43,42 +62,85 @@
             <div id="events" class="container">
               <h3 class="subtitle">Upcoming Events will display here : <span id="event-search-term"></span></h3>
               <div id="event-container" class="list-group"></div>
-            </div>
 
+            </div>
+          </section>
+
+          <section id="lyrics">
+            <div class="ui grid container">
+            <div class="eight wide column">
             <div class="card">
+
+              <h2>Search Lyrics:</h2>
+              <form id="form">
+                  <input type="text" id="search" placeholder="Enter artist/song name...">
+                  <button>Get Lyrics</button>
+              </form>
+        
+              
             <h2>Search Lyrics:</h2>
             <form id="form">
                 <input type="text" id="search" placeholder="Enter artist/song name...">
                 <button>Get Lyrics</button>
             </form>
 
+
             </div>
-            <div id="result" class="container">
-              <h3>Lyric Results will be displayed here:</h3>
+            <div class="eight wide column">
+              <div id="result" class="container">
+                <h3>Results:</h3>
+              </div>
+              </div>
             </div>
+          </section>
     
-            <section>
-              <h1>Search Flights:</h1>
-              <form action="http://www.kayak.com/s/search/air" method="GET">
-                <fieldset>
-                  <legend>Origin</legend>
-                  <label>From
-                    <input type="search" name="l1" data-smarty-s="1" size="50" autocomplete="off"></label>
-                  <label>Depart
-                    <input type="date" name="t1"></label>
-                </fieldset>
-                <br>
-                <fieldset>
-                  <legend>Destination</legend>
-                  <label>To
-                    <input type="search" name="l2" data-smarty-s="1" size="50" autocomplete="off" required></label>
-                  <label>Return
-                    <input type="date" name="t2"></label>
-                </fieldset>
-                <button type="submit">Search</button>
-              </form>
+            <section id="flights">
+              <div class="ui grid container">
+                <div class="sixteen wide column">
+                  <h2>Search Flights:</h2>
+                  </div>
+                <div class="eight wide column">
+                <form action="http://www.kayak.com/s/search/air" method="GET">
+                    <h4>Origin</h4>
+                      <label>From <input type="search" name="l1" data-smarty-s="1" size="50" autocomplete="off" placeholder="Enter your city.." required></label>
+                      <label>Departure Date <input type="date" name="t1"></label>
+                  </div>
+                <div class="eight wide column">
+                    <h4>Destination</h4>
+                      <label>To <input type="search" name="l2" data-smarty-s="1" size="50" autocomplete="off" placeholder="Nashville" required></label>
+                      <label>Return Date <input type="date" name="t2"></label>
+                  </div>
+                    <div class="sixteen wide column">
+                      <button class="fluid ui button" type="submit">Search</button>
+                    </div>
+                </form>
+              </div>
             </section>
 
+            <footer>
+              <div class="ui grid container fluid">
+                <div class="seven wide column">
+                  <h4>Alyse Alford</h4>
+                  <a href="https://www.linkedin.com/in/alyse-alford-5120761b4/"><i class="fab fa-linkedin fa-2x"></i></a>
+                  <a href="https://github.com/jojoford"><i class="fab fa-github-square fa-2x"></i></a>
+                  <a href="https://jojoford.github.io/portfolio/"><i class="fas fa-globe fa-2x"></i></a>
+                </div>
+                <div class="seven wide column">
+                  <h4>Justin Welch</h4>
+                  <a href="https://www.linkedin.com/in/justin-welch-16a3531b9/"><i class="fab fa-linkedin fa-2x"></i></a>
+                  <a href="https://github.com/JWelch775"><i class="fab fa-github-square fa-2x"></i></a>
+                  <a href="https://jwelch775.github.io/professional-portfolio/"><i class="fas fa-globe fa-2x"></i></a>
+                </div>
+                <div class="two wide column">
+                  <h4>Ashton Pierce</h4>
+                  <a href="https://www.linkedin.com/in/ashton-pierce/"><i class="fab fa-linkedin fa-2x"></i></a>
+                  <a href="https://github.com/apierce17"><i class="fab fa-github-square fa-2x"></i></a>
+                  <a href="https://apierce17.github.io/Portfolio/"><i class="fas fa-globe fa-2x"></i></a>
+                </div>
+              </div>
+            </footer>
+    
+    <script src="./assets/js/kayak.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

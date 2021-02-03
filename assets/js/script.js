@@ -160,12 +160,12 @@ async function searchSongs(term) {
 // Show song and artist in DOM
 function showData(data) {
     result.innerHTML = `
-    <ul class="songs">
+    <ul class="songs" list-style-type>
       ${data.data
             .map(
                 song => `<li>
       <span><strong>${song.artist.name}</strong> - ${song.title}</span>
-      <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+      <button class="lyricBtn pt" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
     </li>`
             )
             .join('')}
@@ -218,7 +218,7 @@ form.addEventListener('submit', e => {
     const searchTerm = search.value.trim();
 
     if (!searchTerm) {
-        alert('Please type in a search term');
+        alert('Please enter an artist or song name');
     } else {
         searchSongs(searchTerm);
     }
