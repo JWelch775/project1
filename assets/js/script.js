@@ -2,6 +2,7 @@ var searchFormEl = document.querySelector("#user-form")
 var artistInputEl = document.querySelector("#artist-search")
 var eventContainerEl = document.querySelector("#event-container")
 var artistSearchTerm = document.querySelector("#event-search-term")
+var priceContainerEl = document.querySelector("#price-container")
 
 function getEvents(keyword)
     {
@@ -16,7 +17,6 @@ function getEvents(keyword)
                         response.json().then(function(response)
                             {
                                 displayEvents(response, keyword);
-                                displayTicketPricing(response);
                                 //console.log(keyword, response);
                             });
                     }
@@ -87,61 +87,16 @@ function displayEvents(shows, searchTerm)
                 var priceEl = document.createElement("div")
                 priceEl.classList = "event-list";
 
-                if(showArr[i].priceRanges > 0)
-                    {
-                        priceEl.innerHTML = 
-                        "<span>" + showPrice[i].min + "</span>"
-                    }
-
-
-                
-
                 //append to container 
                 eventEl.appendChild(eventTitleEl);
 
                 eventContainerEl.appendChild(eventEl);
-
-                
-                
-
             }
-            
-            
     }
-
-function displayTicketPricing(prices)
-    {
-        var priceArr = prices._embedded.events;
-        eventContainerEl.textContent = displayEvents();
-
-        
-
-        //loop over prices for events
-        for(i = 0; i < priceArr.length; i++)
-            {
-                var priceRange = priceArray[i].url;
-                console.log(priceRange);
-                
-                //create a container for price
-                var priceRangeEl = document.createElement("a");
-
-                var priceRangeTitleEl = document.createElement("span");
-                priceRangeTitleEl.textContent = priceRange;
-
-                //append to container
-                priceRangeEl.appendChild(priceRangeTitleEl);
-
-                eventContainerEl.appendChild(priceRangeEl);
-
-            }
-        
-        
-    }
-
 
 searchFormEl.addEventListener("submit", formSubmitHandler);
 
-
+//start of lyric api
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 const result = document.getElementById('result');
