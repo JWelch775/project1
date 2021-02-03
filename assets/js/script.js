@@ -16,6 +16,7 @@ function getEvents(keyword)
                         response.json().then(function(response)
                             {
                                 displayEvents(response, keyword);
+                                displayTicketPricing(response);
                                 //console.log(keyword, response);
                             });
                     }
@@ -50,11 +51,10 @@ function formSubmitHandler(event)
 
 function displayEvents(shows, searchTerm)
     {
-        var showArr = shows._embedded.events
+        var showArr = shows._embedded.events;
         console.log(shows);
         eventContainerEl.textContent = "";
         artistSearchTerm.textContent = searchTerm;
-        
 
 
         //check if api returned any events
@@ -69,23 +69,73 @@ function displayEvents(shows, searchTerm)
             {
                 var eventTitle = showArr[i].name;
                 console.log(eventTitle);
+                var showLink = showArr[i].url;
+                var showPrice = showArr[i].priceRanges
+                console.log(showPrice);
 
                 //create a container for each event
                 var eventEl = document.createElement("a");
-                eventEl.classList = "list-item";
+                eventEl.classList = "event-list";
+                eventEl.setAttribute("href", showLink,);
+                eventEl.setAttribute("target", "_blank");
                 
                 //create a span element to hold event names
                 var eventTitleEl = document.createElement("span");
+                eventTitleEl.classList = "event-list";
                 eventTitleEl.textContent = eventTitle;
+
+                var priceEl = document.createElement("div")
+                priceEl.classList = "event-list";
+
+                if(showArr[i].priceRanges > 0)
+                    {
+                        priceEl.innerHTML = 
+                        "<span>" + showPrice[i].min + "</span>"
+                    }
+
+
+                
 
                 //append to container 
                 eventEl.appendChild(eventTitleEl);
 
                 eventContainerEl.appendChild(eventEl);
 
+                
+                
+
             }
             
             
+    }
+
+function displayTicketPricing(prices)
+    {
+        var priceArr = prices._embedded.events;
+        eventContainerEl.textContent = displayEvents();
+
+        
+
+        //loop over prices for events
+        for(i = 0; i < priceArr.length; i++)
+            {
+                var priceRange = priceArray[i].url;
+                console.log(priceRange);
+                
+                //create a container for price
+                var priceRangeEl = document.createElement("a");
+
+                var priceRangeTitleEl = document.createElement("span");
+                priceRangeTitleEl.textContent = priceRange;
+
+                //append to container
+                priceRangeEl.appendChild(priceRangeTitleEl);
+
+                eventContainerEl.appendChild(priceRangeEl);
+
+            }
+        
+        
     }
 
 
@@ -110,12 +160,12 @@ async function searchSongs(term) {
 // Show song and artist in DOM
 function showData(data) {
     result.innerHTML = `
-    <ul class="songs">
+    <ul class="songs" list-style-type>
       ${data.data
             .map(
                 song => `<li>
       <span><strong>${song.artist.name}</strong> - ${song.title}</span>
-      <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
+      <button class="lyricBtn pt" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Lyrics</button>
     </li>`
             )
             .join('')}
@@ -158,7 +208,7 @@ async function getLyrics(artist, songTitle) {
     result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
   <span>${lyrics}</span>`;
 
-    more.innerHTML = '';
+    //more.innerHTML = '';
 }
 
 // Event listeners
@@ -168,7 +218,7 @@ form.addEventListener('submit', e => {
     const searchTerm = search.value.trim();
 
     if (!searchTerm) {
-        alert('Please type in a search term');
+        alert('Please enter an artist or song name');
     } else {
         searchSongs(searchTerm);
     }

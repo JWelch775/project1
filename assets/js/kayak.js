@@ -60,7 +60,7 @@ $(function()
         function(index, input) {
             var $input = $(input);
             
-            // generate (hopefully) unique ID for datalist
+            // generate unique ID for datalist
             var listId = $input.attr('name') + "-" + $input.data('smartyS') + "-list";
 
             // create datalist and associate with this input
