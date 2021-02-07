@@ -2,6 +2,7 @@ var searchFormEl = document.querySelector("#user-form")
 var artistInputEl = document.querySelector("#artist-search")
 var eventContainerEl = document.querySelector("#event-container")
 var artistSearchTerm = document.querySelector("#event-search-term")
+const events = [];
 
 function getEvents(keyword)
     {
@@ -38,6 +39,7 @@ function formSubmitHandler(event)
         //get value from input element
         var artist = artistInputEl.value.trim();
 
+
         if(artist)
             {
                 getEvents(artist);
@@ -56,7 +58,6 @@ function displayEvents(shows, searchTerm)
         eventContainerEl.textContent = "";
         artistSearchTerm.textContent = searchTerm;
 
-
         //check if api returned any events
         if(showArr.length === 0)
             {
@@ -69,6 +70,9 @@ function displayEvents(shows, searchTerm)
             {
                 var eventTitle = showArr[i].name;
                 console.log(eventTitle);
+                // search saved to local storage
+                localStorage.setItem('eventTitle', searchTerm);
+            const event = localStorage.getItem('eventTitle');
                 var showLink = showArr[i].url;
                 var showPrice = showArr[i].priceRanges
                 console.log(showPrice);
@@ -217,6 +221,7 @@ form.addEventListener('submit', e => {
 
     const searchTerm = search.value.trim();
     //adding to local storage
+    localStorage.setItem('ArtistSong', searchTerm);
     const ArtistSong = localStorage.getItem('ArtistSong');
     if (!searchTerm) {
         alert('Please enter an artist or song name');
