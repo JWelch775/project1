@@ -146,7 +146,7 @@ const form = document.getElementById('form');
 const search = document.getElementById('search');
 const result = document.getElementById('result');
 const more = document.getElementById('more');
-
+const ArtistSongs =[];
 const apiURL = 'https://api.lyrics.ovh';
 
 // Search by song or artist
@@ -216,7 +216,8 @@ form.addEventListener('submit', e => {
     e.preventDefault();
 
     const searchTerm = search.value.trim();
-
+    //adding to local storage
+    const ArtistSong = localStorage.getItem('ArtistSong');
     if (!searchTerm) {
         alert('Please enter an artist or song name');
     } else {
